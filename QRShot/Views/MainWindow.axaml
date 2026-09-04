@@ -1,0 +1,108 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:QRShot.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Class="QRShot.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="QRShot"
+        Width="400" 
+        Height="450"
+        WindowDecorations="BorderOnly"
+        CanResize="False"
+        Topmost="True"
+        >
+
+       <Grid Background="#1172a9">
+           <StackPanel HorizontalAlignment="Stretch"
+                       VerticalAlignment="Bottom"
+                       Spacing="10"
+                       Margin="20,0"
+                       IsVisible="{Binding !IsClear}">
+               <Image Source="{Binding QrCode.Image}"
+                      MaxHeight="250"
+                      Stretch="Uniform"/>
+               <Grid
+                   ColumnDefinitions="*, 80">
+                   <SelectableTextBlock Grid.Column="0" 
+                                        Text="{Binding QrCode.Content}"
+                                        TextAlignment="Left"
+                                        Background="#0e5d8b"
+                                        Padding="15,10"
+                                        FontSize="14"
+                                        HorizontalAlignment="Stretch"/>
+                   <Button Grid.Column="1" 
+                           Content="Copy"
+                           Command="{Binding AddToClipboardCommand}"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Stretch"
+                           VerticalContentAlignment="Center"
+                           HorizontalContentAlignment="Center"/>
+               </Grid>
+               <Grid Margin="5,0,5,20" 
+                     ColumnDefinitions="*,*"
+                     ColumnSpacing="20">
+
+                   <Button Grid.Column="0"
+                           Content="Open"
+                           IsEnabled="{Binding QrCode.IsLink}"
+                           Command="{Binding OpenLinkCommand}"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           HorizontalContentAlignment="Center"
+                           VerticalContentAlignment="Center"
+                           HorizontalAlignment="Stretch"
+                           Height="70" 
+                           />
+
+                   <Button Grid.Column="1"
+                           Content="Close"
+                           Command="{Binding CloseCommand}"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           HorizontalContentAlignment="Center"
+                           VerticalContentAlignment="Center"
+                           HorizontalAlignment="Stretch"
+                           Height="70" />
+               </Grid>
+           </StackPanel>
+           
+           <!-- File Picker Display -->
+           <Grid RowDefinitions="*, Auto"
+                 IsVisible="{Binding IsClear}"
+                 Margin="20">
+                   <!-- Drag and drop button in center -->
+                   <Button Grid.Row="0"
+                           Background="#0e5d8b"
+                           BorderBrush="#085d8b"
+                           BorderThickness="2"
+                           CornerRadius="8"
+                           Padding="40,120"
+                           DragDrop.AllowDrop="True"
+                           HorizontalAlignment="Stretch"
+                           VerticalAlignment="Center"
+                           Command="{Binding SelectFileCommand}">
+                           <TextBlock Text="Drag files here or click below"
+                                      TextAlignment="Center"
+                                      FontSize="16"
+                                      Foreground="#ffffff"/>
+                   </Button>
+        
+                   <!-- Close button at bottom -->
+                   <Button Grid.Row="1"
+                           Content="Close"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Height="50"
+                           Width="200"
+                           HorizontalContentAlignment="Center"
+                           VerticalContentAlignment="Center"
+                           Command="{Binding CloseCommand}"
+                           Margin="0,10,0,0"/>
+           </Grid>
+       </Grid>
+</Window>
