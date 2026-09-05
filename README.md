@@ -1,5 +1,7 @@
 # QRShot
 
+<img src="qrshotlogo.png" width="128">
+
 QRShot is a lightweight Windows desktop app that automatically scans screenshots for QR codes and instantly pops up when it detects one. Decode links and text without leaving your workflow.
 
 ## Features

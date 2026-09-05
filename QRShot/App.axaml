@@ -15,7 +15,7 @@
     
     <TrayIcon.Icons>
         <TrayIcons>
-            <TrayIcon Icon="/Assets/avalonia-logo.ico"
+            <TrayIcon Icon="/Assets/qrshot-logo.ico"
                       ToolTipText="QRShot"
                       Clicked="ShowWindow_OnClick">
                 <TrayIcon.Menu>

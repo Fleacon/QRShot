@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         x:Class="QRShot.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/qrshot-logo.ico"
         Title="QRShot"
         Width="400" 
         Height="450"
